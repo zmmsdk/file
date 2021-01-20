@@ -270,7 +270,7 @@ pipeline {
   }
   environment {
     DOCKER_REG = '39.101.135.227:85/library'
-    BUILD_DIR = '/data/build-devops'
+    BUILD_DIR = '/dev'
     MAVEN_BUIL_COMMAND = 'mvn clean package -Dfile.encoding=UTF-8 -DskipTests=true'
   }
   post {
