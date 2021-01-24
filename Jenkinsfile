@@ -24,7 +24,7 @@ pipeline {
 
             DOCKER_IMAGE = "${DOCKER_REG}/${JOB_NAME}:${PROJECT_VERSION}"
           
-            sh "sed -i 's#PACKAGE_PATH#$./demo-0.0.1-SNAPSHOT.jar#g' Dockerfile"
+            sh "sed -i 's#PACKAGE_PATH#./demo-0.0.1-SNAPSHOT.jar#g' Dockerfile"
             sh "sed -i 's/PACKAGE_NAME/demo-0.0.1-SNAPSHOT.jar/g' Dockerfile"
             sh "sed -i 's#ProjectImage#${DOCKER_IMAGE}#' ${BUILD_NUMBER}.yaml"
 
