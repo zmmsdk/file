@@ -10,6 +10,7 @@ pipeline {
   stages {
     stage('Maven Build') {
       steps {
+        echo "代码构建"
         //sh "/root/build-devops/apache-maven-3.6.3/bin/mvn clean package -Dfile.encoding=UTF-8 -DskipTests=true"
       }
     }
