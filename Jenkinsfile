@@ -71,7 +71,7 @@ pipeline {
         sh "sleep 10"
         sh 'kubectl apply -f ${BUILD_NUMBER}.yaml --record'
         sh "sleep 20"
-        sh "kubectl get pod|grep xiaomiweb-service"
+        sh "kubectl get pod|grep xiaoweb-service"
       }
     }
 
@@ -87,14 +87,14 @@ pipeline {
 
     success {
       script {
-        currentBuild.description = "\n 构建成功!"
+        currentBuild.description = "\n ${PROJECT_VERSION}构建成功!"
       }
 
     }
 
     failure {
       script {
-        currentBuild.description = "\n 部署失败!"
+        currentBuild.description = "\n ${PROJECT_VERSION}部署失败!"
       }
 
     }
