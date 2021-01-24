@@ -1,5 +1,5 @@
 pipeline {
-  agent { label "node1" }
+  agent { label "master" }
   environment {
       DOCKER_REG = '172.26.111.246:85/harbor'
       BUILD_DIR = '/root/build-devops'
