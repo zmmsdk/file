@@ -11,21 +11,21 @@ pipeline {
     stage('Maven Build') {
       steps {
         echo "代码构建"
-        //sh "/root/build-devops/apache-maven-3.6.3/bin/mvn clean package -Dfile.encoding=UTF-8 -DskipTests=true"
+        sh "/root/build-devops/apache-maven-3.6.3/bin/mvn clean install"
       }
     }
 
     stage('Environment Init') {
       steps {
         sh 'echo 初始化环境'
-        sh "/bin/cp -rf ${BUILD_DIR}/service/demo-0.0.1-SNAPSHOT.jar ./"
+        //sh "/bin/cp -rf ${BUILD_DIR}/service/demo-0.0.1-SNAPSHOT.jar ./"
         sh "/bin/cp -rf $BUILD_DIR/service/k8s.yaml ./${BUILD_NUMBER}.yaml"
         sh "/bin/cp -rf $BUILD_DIR/service/Dockerfile ./"
         script {
 
             DOCKER_IMAGE = "${DOCKER_REG}/${JOB_NAME}:${PROJECT_VERSION}"
           
-            sh "sed -i 's#PACKAGE_PATH#./demo-0.0.1-SNAPSHOT.jar#g' Dockerfile"
+            sh "sed -i 's#PACKAGE_PATH#./target/demo-0.0.1-SNAPSHOT.jar#g' Dockerfile"
             sh "sed -i 's/PACKAGE_NAME/demo-0.0.1-SNAPSHOT.jar/g' Dockerfile"
             sh "sed -i 's#ProjectImage#${DOCKER_IMAGE}#' ${BUILD_NUMBER}.yaml"
 
