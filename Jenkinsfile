@@ -6,11 +6,7 @@ pipeline {
       MAVEN_BUIL_COMMAND = 'mvn clean package -Dfile.encoding=UTF-8 -DskipTests=true'
     }
 
-  options {
-    timestamps()
-    disableConcurrentBuilds()
-    buildDiscarder(logRotator(numToKeepStr: '50'))
-  }
+  
   stages {
     stage('Maven Build') {
       steps {
