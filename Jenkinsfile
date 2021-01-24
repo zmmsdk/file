@@ -67,7 +67,7 @@ pipeline {
 
       steps {
         sh 'echo Deploy'
-        sh "kubectl delete replicationcontroller xiaomiweb-service && kubectl delete service xiaomiweb-service"
+        sh "kubectl delete replicationcontroller xiaoweb-service && kubectl delete service xiaoweb-service"
         sh "sleep 10"
         sh 'kubectl apply -f ${BUILD_NUMBER}.yaml --record'
         sh "sleep 20"
