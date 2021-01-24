@@ -23,31 +23,7 @@ pipeline {
 
             DOCKER_IMAGE = "${DOCKER_REG}/${JOB_NAME}:${PROJECT_VERSION}"
 
-            sh "sed -i 's#PACKAGE_PATH#${PACKAGE_PATH}#g' Dockerfile"
-
-            sh "sed -i 's#PACKAGE_NAME#${PACKAGE_NAME}#g' Dockerfile"
-
-            sh "sed -i 's/APP_PORT/${APP_PORT}/g' Dockerfile"
-
-            sh "sed -i 's/ENV/local/g' Dockerfile"
-
-            sh "sed -i 's/appdenv/${appdenv}/g' Dockerfile"
-
-            sh "sed -i 's#-Dspring.profiles.active=local##g' Dockerfile"
-
-            sh "sed -i 's/APP_PORT/${APP_PORT}/' ${BUILD_NUMBER}.yaml"
-
-            sh "sed -i 's/PROJECT_NS/${APP_ID}-${ENV}/' ${BUILD_NUMBER}.yaml"
-
-            sh "sed -i 's/TemplateProject/${JOB_NAME}/' ${BUILD_NUMBER}.yaml"
-
             sh "sed -i 's#ProjectImage#${DOCKER_IMAGE}#' ${BUILD_NUMBER}.yaml"
-
-            sh "sed -i 's/REP/${REP}/' ${BUILD_NUMBER}.yaml"
-
-            sh "sed -i 's/ENV/${ENV}/' ${BUILD_NUMBER}.yaml"
-
-            sh "sed -i 's/NodeLable/${NODE_LABLE}-${ENV}/' ${BUILD_NUMBER}.yaml"
 
 
         }
@@ -103,21 +79,21 @@ pipeline {
 
     success {
       script {
-        currentBuild.description = "\n ${ENV}-镜像${JOB_NAME}:${GIT_TAG}构建成功!"
+        currentBuild.description = "\n 构建成功!"
       }
 
     }
 
     failure {
       script {
-        currentBuild.description = "\n ${ENV}-镜像${JOB_NAME}:${GIT_TAG}部署失败!"
+        currentBuild.description = "\n 部署失败!"
       }
 
     }
 
     aborted {
       script {
-        currentBuild.description = "\n ${ENV}-镜像${JOB_NAME}:${GIT_TAG}部署取消!"
+        currentBuild.description = "\n 部署取消!"
       }
 
     }
