@@ -3,6 +3,7 @@ pipeline {
   environment {
       DOCKER_REG = '172.26.111.246:85/harbor'
       BUILD_DIR = '/root/build-devops'
+      PROJECT_VERSION = "v1.0.0"
       MAVEN_BUIL_COMMAND = 'mvn clean package -Dfile.encoding=UTF-8 -DskipTests=true'
     }
 
