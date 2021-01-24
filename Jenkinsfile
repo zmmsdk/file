@@ -22,7 +22,9 @@ pipeline {
         script {
 
             DOCKER_IMAGE = "${DOCKER_REG}/${JOB_NAME}:${PROJECT_VERSION}"
-
+          
+            sh "sed -i 's#PACKAGE_PATH#${PACKAGE_PATH}#g' Dockerfile"
+            sh "sed -i 's/PACKAGE_NAME/${PACKAGE_NAME}/g' Dockerfile"
             sh "sed -i 's#ProjectImage#${DOCKER_IMAGE}#' ${BUILD_NUMBER}.yaml"
 
 
