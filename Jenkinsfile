@@ -14,8 +14,8 @@ pipeline {
         echo "代码构建"
        // sh "mvn -f clean install"
         // sh '''export JAVA_HOME=/usr/bin/java
-///root/build-devops/apache-maven-3.6.3/bin/mvn clean package -Dmaven.test.skip=true'''
-        // sh "/root/build-devops/apache-maven-3.6.3/bin/mvn clean package -Dfile.encoding=UTF-8 -DskipTests=true"
+          //root/build-devops/apache-maven-3.6.3/bin/mvn clean package -Dmaven.test.skip=true'''
+         sh "/root/build-devops/apache-maven-3.6.3/bin/mvn clean package -Dfile.encoding=UTF-8 -DskipTests=true"
        
       }
     }
@@ -23,19 +23,19 @@ pipeline {
     stage('Environment Init') {
       steps {
         sh 'echo 初始化环境'
-        //sh "/bin/cp -rf ${BUILD_DIR}/service/demo-0.0.1-SNAPSHOT.jar ./"
-        //sh "cp -rf /root/build-devops/service/k8s.yaml ./${BUILD_NUMBER}.yaml"
-        //sh "cp -rf /root/build-devops/service/Dockerfile ./"
-      //  script {
+        sh "/bin/cp -rf ${BUILD_DIR}/service/demo-0.0.1-SNAPSHOT.jar ./"
+        sh "cp -rf /root/build-devops/service/k8s.yaml ./${BUILD_NUMBER}.yaml"
+        sh "cp -rf /root/build-devops/service/Dockerfile ./"
+        script {
 
-         //   DOCKER_IMAGE = "${DOCKER_REG}/${JOB_NAME}:${PROJECT_VERSION}"
+            DOCKER_IMAGE = "${DOCKER_REG}/${JOB_NAME}:${PROJECT_VERSION}"
           
-          //  sh "sed -i 's#PACKAGE_PATH#./target/demo-1.0.war#g' Dockerfile"
-          //  sh "sed -i 's/PACKAGE_NAME/demo-1.0.war/g' Dockerfile"
-          //  sh "sed -i 's#ProjectImage#${DOCKER_IMAGE}#' ${BUILD_NUMBER}.yaml"
+           sh "sed -i 's#PACKAGE_PATH#./target/demo-1.0.war#g' Dockerfile"
+            sh "sed -i 's/PACKAGE_NAME/demo-1.0.war/g' Dockerfile"
+            sh "sed -i 's#ProjectImage#${DOCKER_IMAGE}#' ${BUILD_NUMBER}.yaml"
 
 
-        //}
+        }
 
       }
     }
@@ -48,7 +48,7 @@ pipeline {
 
   
 
-          sh "docker build -f ./Dockerfile ."
+          sh "docker build -t ${DOCKER_REG}/${JOB_NAME}:${PROJECT_VERSION}."
         }
 
       }
@@ -60,9 +60,9 @@ pipeline {
         script {
           echo "build image"
 
-      //    DOCKER_IMAGE = "${DOCKER_REG}/${JOB_NAME}:${PROJECT_VERSION}"
+          DOCKER_IMAGE = "${DOCKER_REG}/${JOB_NAME}:${PROJECT_VERSION}"
 
-       //   sh "docker push ${DOCKER_IMAGE}"
+         sh "docker push ${DOCKER_IMAGE}"
         }
 
       }
