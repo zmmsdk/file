@@ -35,7 +35,7 @@ pipeline {
           //  sh "sed -i 's#ProjectImage#${DOCKER_IMAGE}#' ${BUILD_NUMBER}.yaml"
 
 
-        }
+        //}
 
       }
     }
