@@ -13,8 +13,8 @@ pipeline {
       steps {
         echo "代码构建"
        // sh "mvn -f clean install"
-         sh '''export JAVA_HOME=/usr/bin/java
-        /root/build-devops/apache-maven-3.6.3/bin/mvn clean package -Dmaven.test.skip=true'''
+        // sh '''export JAVA_HOME=/usr/bin/java
+///root/build-devops/apache-maven-3.6.3/bin/mvn clean package -Dmaven.test.skip=true'''
         // sh "/root/build-devops/apache-maven-3.6.3/bin/mvn clean package -Dfile.encoding=UTF-8 -DskipTests=true"
        
       }
@@ -30,8 +30,8 @@ pipeline {
 
             DOCKER_IMAGE = "${DOCKER_REG}/${JOB_NAME}:${PROJECT_VERSION}"
           
-            sh "sed -i 's#PACKAGE_PATH#./target/demo-0.0.1-SNAPSHOT.jar#g' Dockerfile"
-            sh "sed -i 's/PACKAGE_NAME/demo-0.0.1-SNAPSHOT.jar/g' Dockerfile"
+            sh "sed -i 's#PACKAGE_PATH#./target/demo-1.0.war#g' Dockerfile"
+            sh "sed -i 's/PACKAGE_NAME/demo-1.0.war/g' Dockerfile"
             sh "sed -i 's#ProjectImage#${DOCKER_IMAGE}#' ${BUILD_NUMBER}.yaml"
 
 
