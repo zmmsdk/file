@@ -12,7 +12,7 @@ pipeline {
     stage('Maven Build') {
       steps {
         echo "代码构建"
-        sh "mvn -f clean install"
+       // sh "mvn -f clean install"
       }
     }
 
