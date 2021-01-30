@@ -48,7 +48,7 @@ pipeline {
 
   
 
-          sh "docker build -t ${DOCKER_REG}/${JOB_NAME}:${PROJECT_VERSION}."
+          sh "docker build -t ${DOCKER_REG}/${JOB_NAME}:${PROJECT_VERSION} ."
         }
 
       }
