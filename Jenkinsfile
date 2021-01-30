@@ -60,9 +60,9 @@ pipeline {
         script {
           echo "build image"
 
-          DOCKER_IMAGE = "${DOCKER_REG}/${JOB_NAME}:${PROJECT_VERSION}"
+      //    DOCKER_IMAGE = "${DOCKER_REG}/${JOB_NAME}:${PROJECT_VERSION}"
 
-          sh "docker push ${DOCKER_IMAGE}"
+       //   sh "docker push ${DOCKER_IMAGE}"
         }
 
       }
