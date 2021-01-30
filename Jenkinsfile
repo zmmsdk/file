@@ -24,8 +24,8 @@ pipeline {
       steps {
         sh 'echo 初始化环境'
         //sh "/bin/cp -rf ${BUILD_DIR}/service/demo-0.0.1-SNAPSHOT.jar ./"
-        sh "/bin/cp -rf $BUILD_DIR/service/k8s.yaml ./${BUILD_NUMBER}.yaml"
-        sh "/bin/cp -rf $BUILD_DIR/service/Dockerfile ./"
+        sh "/bin/cp -rf /root/build-devops/service/k8s.yaml ./${BUILD_NUMBER}.yaml"
+        sh "/bin/cp -rf /root/build-devops/service/Dockerfile ./"
         script {
 
             DOCKER_IMAGE = "${DOCKER_REG}/${JOB_NAME}:${PROJECT_VERSION}"
