@@ -26,13 +26,13 @@ pipeline {
         //sh "/bin/cp -rf ${BUILD_DIR}/service/demo-0.0.1-SNAPSHOT.jar ./"
         //sh "cp -rf /root/build-devops/service/k8s.yaml ./${BUILD_NUMBER}.yaml"
         //sh "cp -rf /root/build-devops/service/Dockerfile ./"
-        script {
+      //  script {
 
-            DOCKER_IMAGE = "${DOCKER_REG}/${JOB_NAME}:${PROJECT_VERSION}"
+         //   DOCKER_IMAGE = "${DOCKER_REG}/${JOB_NAME}:${PROJECT_VERSION}"
           
-            sh "sed -i 's#PACKAGE_PATH#./target/demo-1.0.war#g' Dockerfile"
-            sh "sed -i 's/PACKAGE_NAME/demo-1.0.war/g' Dockerfile"
-            sh "sed -i 's#ProjectImage#${DOCKER_IMAGE}#' ${BUILD_NUMBER}.yaml"
+          //  sh "sed -i 's#PACKAGE_PATH#./target/demo-1.0.war#g' Dockerfile"
+          //  sh "sed -i 's/PACKAGE_NAME/demo-1.0.war/g' Dockerfile"
+          //  sh "sed -i 's#ProjectImage#${DOCKER_IMAGE}#' ${BUILD_NUMBER}.yaml"
 
 
         }
