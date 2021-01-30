@@ -13,7 +13,7 @@ pipeline {
       steps {
         echo "代码构建"
        // sh "mvn -f clean install"
-         sh '''export JAVA_HOME=/usr/local/jdk1.8
+         sh '''export JAVA_HOME=/usr/bin/java
         /root/build-devops/apache-maven-3.6.3/bin/mvn clean package -Dmaven.test.skip=true'''
         // sh "/root/build-devops/apache-maven-3.6.3/bin/mvn clean package -Dfile.encoding=UTF-8 -DskipTests=true"
        
