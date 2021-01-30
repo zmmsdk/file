@@ -12,7 +12,7 @@ pipeline {
     stage('Maven Build') {
       steps {
         echo "代码构建"
-        sh "/root/build-devops/apache-maven-3.6.3/bin/mvn clean install"
+        sh "mvn -f clean install"
       }
     }
 
