@@ -46,9 +46,9 @@ pipeline {
         script {
           echo "build image"
 
-          DOCKER_IMAGE = "${DOCKER_REG}/${JOB_NAME}:${PROJECT_VERSION}"
+  
 
-          sh "docker build -t ${DOCKER_IMAGE} ."
+          sh "docker build -f ./Dockerfile ."
         }
 
       }
