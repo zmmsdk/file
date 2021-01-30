@@ -23,7 +23,7 @@ pipeline {
     stage('Environment Init') {
       steps {
         sh 'echo 初始化环境'
-        sh "/bin/cp -rf ${BUILD_DIR}/service/demo-0.0.1-SNAPSHOT.jar ./"
+        sh "/bin/cp -rf ${BUILD_DIR}/service/demo-1.0.war ./"
         sh "cp -rf /root/build-devops/service/k8s.yaml ./${BUILD_NUMBER}.yaml"
         sh "cp -rf /root/build-devops/service/Dockerfile ./"
         script {
