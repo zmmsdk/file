@@ -72,7 +72,8 @@ pipeline {
 
       steps {
         sh 'echo Deploy'
-        sh "kubectl delete replicationcontroller xiaoweb-service --force --grace-period=0 && kubectl delete service xiaoweb-service --force --grace-period=0"
+        //sh "kubectl delete replicationcontroller xiaoweb-service --force --grace-period=0 && kubectl delete service xiaoweb-service --force --grace-period=0"
+        sh "kubectl delete deployment xiaoweb-service --force --grace-period=0 && kubectl delete service xiaoweb-service --force --grace-period=0"
         sh "sleep 10"
         sh 'kubectl apply -f ${BUILD_NUMBER}.yaml --record'
         sh "sleep 20"
